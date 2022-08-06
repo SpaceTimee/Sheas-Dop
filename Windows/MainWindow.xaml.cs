@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
@@ -101,7 +102,7 @@ public partial class MainWindow : Window
     }
     private void AboutButton_Click(object sender, RoutedEventArgs e)
     {
-        try { MessageBox.Show("欢迎使用 Sheas Dop 0.0.0 (Demo)，开发者 Space Time，反馈群 338919498"); }
+        try { MessageBox.Show("欢迎使用 Sheas Dop " + Assembly.GetExecutingAssembly().GetName().Version!.ToString()[0..^2] + "，开发者 Space Time，反馈群 338919498"); }
         catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
     }
 

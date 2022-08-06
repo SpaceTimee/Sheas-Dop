@@ -8,10 +8,10 @@
     <PackageReleaseNotes>Just Purge It</PackageReleaseNotes>
     <Authors>Space Time</Authors>
     <Company>Space Time</Company>
-    <AssemblyVersion>0.0.0</AssemblyVersion>
-    <Version>0.0.0</Version>
-    <FileVersion>0.0.0</FileVersion>
-    <InformationalVersion>0.0.0</InformationalVersion>
+    <AssemblyVersion>0.0.1</AssemblyVersion>
+    <Version>0.0.1</Version>
+    <FileVersion>0.0.1</FileVersion>
+    <InformationalVersion>0.0.1</InformationalVersion>
     <PackageTags>Tool;Sheas;Dop;Dns</PackageTags>
     <ApplicationIcon>Sheas-Dop-Logo.ico</ApplicationIcon>
     <PackageIcon>Sheas Dop Logo.png</PackageIcon>
@@ -51,7 +51,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove=".gitattributes" />
+    <None Remove=".gitignore" />
     <None Remove="app.manifest" />
+    <None Remove="README.md" />
     <None Remove="Sheas-Dop-Logo.ico" />
   </ItemGroup>
 
