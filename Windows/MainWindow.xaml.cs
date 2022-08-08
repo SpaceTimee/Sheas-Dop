@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using TurnerSoftware.DinoDNS;
@@ -111,5 +112,15 @@ public partial class MainWindow : Window
         DnsMessage dnsMessage = await client.QueryAsync(DomainBox.Text, DnsQueryType.A);
         foreach (ARecord aRecord in dnsMessage.Answers.WithARecords())
             if (MessageBox.Show(aRecord.ToIPAddress().ToString(), "解析结果", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) break;
+    }
+
+    private void MainWin_KeyDown(object sender, KeyEventArgs e)
+    {
+        try
+        {
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control && e.Key == Key.W)
+                Environment.Exit(0);
+        }
+        catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
     }
 }

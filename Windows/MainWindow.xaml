@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Style="{DynamicResource CommonWindow}"
-        WindowStartupLocation="CenterScreen" SizeToContent="Height" Width="500" ResizeMode="CanMinimize">
+        WindowStartupLocation="CenterScreen" SizeToContent="Height" Width="500" ResizeMode="CanMinimize" KeyDown="MainWin_KeyDown">
     <Grid>
         <Grid Margin="5">
             <Grid.RowDefinitions>
