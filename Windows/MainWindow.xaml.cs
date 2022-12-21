@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using TurnerSoftware.DinoDNS;
-using TurnerSoftware.DinoDNS.Protocol;
-using TurnerSoftware.DinoDNS.Protocol.ResourceRecords;
+using DnsOverHttps;
 
 namespace Sheas_Dop;
 
@@ -95,9 +91,17 @@ public partial class MainWindow : Window
             if (GlobalButton.Content.ToString() != "全局解析")
                 MessageBox.Show("使用单个解析时需停止全局解析");
             else
-                await ResolveDNS(new DnsClient(new NameServer[] { new NameServer(IPAddress.Parse("1.1.1.1"), NameServers.DefaultDoTPort, ConnectionType.DoT) }, DnsMessageOptions.Default));
+            {
+                Response dohResponse = await new DnsOverHttpsClient().Resolve(DomainBox.Text, ResourceRecordType.A, true, true);
 
-            //NameServers.Cloudflare.IPv4.GetPrimary(ConnectionType.DoH)
+                if (dohResponse.Status == ResponseCode.NoError)
+                {
+                    foreach (Answer dohAnswer in dohResponse.Answers)
+                        if (MessageBox.Show(dohAnswer.Data, "解析结果", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) break;
+                }
+                else
+                    MessageBox.Show("解析失败");
+            }
         }
         catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
     }
@@ -105,13 +109,6 @@ public partial class MainWindow : Window
     {
         try { MessageBox.Show("欢迎使用 Sheas Dop " + Assembly.GetExecutingAssembly().GetName().Version!.ToString()[0..^2] + "，开发者 Space Time，反馈群 338919498"); }
         catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
-    }
-
-    private async Task ResolveDNS(DnsClient client)
-    {
-        DnsMessage dnsMessage = await client.QueryAsync(DomainBox.Text, DnsQueryType.A);
-        foreach (ARecord aRecord in dnsMessage.Answers.WithARecords())
-            if (MessageBox.Show(aRecord.ToIPAddress().ToString(), "解析结果", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) break;
     }
 
     private void MainWin_KeyDown(object sender, KeyEventArgs e)

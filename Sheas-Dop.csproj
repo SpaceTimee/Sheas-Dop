@@ -59,8 +59,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DnsOverHttps" Version="1.1.1" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
-    <PackageReference Include="TurnerSoftware.DinoDNS" Version="0.3.0" />
   </ItemGroup>
 
   <ItemGroup>
