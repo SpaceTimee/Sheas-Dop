@@ -95,7 +95,7 @@ public partial class MainWindow : Window
             if (GlobalButton.Content.ToString() != "全局解析")
                 MessageBox.Show("使用单个解析时需停止全局解析");
             else
-                await ResolveDNS(new DnsClient(new NameServer[] { new NameServer(IPAddress.Parse("1.1.1.1"), NameServers.DefaultDoTPort, ConnectionType.DoT) }, DnsMessageOptions.Default));
+                await ResolveDNS(new DnsClient(new NameServer[] { new NameServer(IPAddress.Parse("8.8.8.8"), NameServers.DefaultDoHPort, ConnectionType.DoH) }, DnsMessageOptions.Default));
 
             //NameServers.Cloudflare.IPv4.GetPrimary(ConnectionType.DoH)
         }
