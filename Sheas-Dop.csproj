@@ -8,10 +8,10 @@
     <PackageReleaseNotes>Just Purge It</PackageReleaseNotes>
     <Authors>Space Time</Authors>
     <Company>Space Time</Company>
-    <AssemblyVersion>0.0.1</AssemblyVersion>
-    <Version>0.0.1</Version>
-    <FileVersion>0.0.1</FileVersion>
-    <InformationalVersion>0.0.1</InformationalVersion>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
+    <Version>0.1.0</Version>
+    <FileVersion>0.1.0</FileVersion>
+    <InformationalVersion>0.1.0</InformationalVersion>
     <PackageTags>Tool;Sheas;Dop;Dns</PackageTags>
     <ApplicationIcon>Sheas-Dop-Logo.ico</ApplicationIcon>
     <PackageIcon>Sheas Dop Logo.png</PackageIcon>
@@ -22,7 +22,7 @@
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright ©  2077</Copyright>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <RootNamespace>Sheas_Dop</RootNamespace>
     <Nullable>enable</Nullable>
@@ -60,10 +60,13 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
-    <PackageReference Include="TurnerSoftware.DinoDNS" Version="0.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Ona-Core">
+      <HintPath>..\Ona-Core\bin\Release\net5.0-windows10.0.22000.0\Ona-Core.dll</HintPath>
+    </Reference>
     <Reference Include="Sheas-Core">
       <HintPath>..\Sheas-Core\bin\Release\Sheas-Core.dll</HintPath>
     </Reference>

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net;
+using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -9,15 +11,15 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using TurnerSoftware.DinoDNS;
-using TurnerSoftware.DinoDNS.Protocol;
-using TurnerSoftware.DinoDNS.Protocol.ResourceRecords;
+using Newtonsoft.Json.Linq;
+using OnaCore;
 
 namespace Sheas_Dop;
 
 public partial class MainWindow : Window
 {
     private static readonly DispatcherTimer MONITOR_TIMER = new() { Interval = new TimeSpan(1000000) };  //0.1s
+    private readonly HttpClient MAIN_CLIENT = new();    //当前窗口使用的唯一的 HttpClient
 
     public MainWindow()
     {
@@ -92,12 +94,26 @@ public partial class MainWindow : Window
     {
         try
         {
-            if (GlobalButton.Content.ToString() != "全局解析")
-                MessageBox.Show("使用单个解析时需停止全局解析");
-            else
-                await ResolveDNS(new DnsClient(new NameServer[] { new NameServer(IPAddress.Parse("8.8.8.8"), NameServers.DefaultDoHPort, ConnectionType.DoH) }, DnsMessageOptions.Default));
+            List<string> ips = [];
 
-            //NameServers.Cloudflare.IPv4.GetPrimary(ConnectionType.DoH)
+            JToken arashiAnswers = await DomainResolve($"https://ns.net.kg/dns-query?name={DomainBox.Text}&type=A");
+            if (arashiAnswers != null)
+                foreach (JToken arashiAnswer in arashiAnswers)
+                    ips.Add(arashiAnswer["data"]!.ToString());
+
+            JToken quad101Answers = await DomainResolve($"https://101.101.101.101/dns-query?name={DomainBox.Text}&type=A");
+            if (quad101Answers != null)
+                foreach (JToken quad101Answer in quad101Answers)
+                    ips.Add(quad101Answer["data"]!.ToString());
+
+            if (ips.Count > 0)
+            {
+                ips = ips.Distinct().ToList();
+                foreach (string ip in ips)
+                    if (MessageBox.Show(ip, "解析结果", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) break;
+            }
+            else
+                MessageBox.Show("没有符合的解析结果", "解析结果");
         }
         catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
     }
@@ -107,12 +123,7 @@ public partial class MainWindow : Window
         catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
     }
 
-    private async Task ResolveDNS(DnsClient client)
-    {
-        DnsMessage dnsMessage = await client.QueryAsync(DomainBox.Text, DnsQueryType.A);
-        foreach (ARecord aRecord in dnsMessage.Answers.WithARecords())
-            if (MessageBox.Show(aRecord.ToIPAddress().ToString(), "解析结果", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel) break;
-    }
+    private async Task<JToken> DomainResolve(string resolverUrl) => JObject.Parse(await Http.GetAsync<string>(resolverUrl, MAIN_CLIENT))["Answer"]!;
 
     private void MainWin_KeyDown(object sender, KeyEventArgs e)
     {
