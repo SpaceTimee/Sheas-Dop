@@ -3,7 +3,7 @@
 </br>
 
 ## 自我介绍
-**Sheas Dop**: 一只基于 **WPF(.Net6)** 的 DNS 解析工具
+**Sheas Dop**: 一只基于 **WPF(.Net8)** 的 DNS 解析工具
 
 * 适用平台: Windows
 
@@ -29,10 +29,11 @@ Setup 安装器: 下载 Sheas Dop Setup.exe 并运行 -> 按照提示设置即�
 [Sheas Dop Build](https://github.com/SpaceTimee/Sheas-Dop/wiki/Sheas-Dop-Build)
 
 ## 项目原理
-通过向加密 DNS 服务器发送 DNS 请求以实现抗污染
+通过向加密 DNS 服务器发送解析请求以实现抗污染
 
 ## 致谢名单
-* **Clash: 为本项目的全局解析功能提供全部技术基础**
+* **Mihomo: 为本项目的全局解析功能提供全部技术基础**
+* **ArashiDNS: 为本项目的单个解析功能提供重要解析来源**
 
 ## 开发者
 **Space Time**
