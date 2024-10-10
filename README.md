@@ -3,9 +3,9 @@
 </br>
 
 ## 自我介绍
-**Sheas Dop**: 一只基于 **WPF(.Net8)** 的 DNS 解析工具
+**Sheas Dop**: 一只基于 **WPF(.Net8)** 的 DNS 抗污染解析工具 ([Sheas Cealer](https://github.com/SpaceTimee/Sheas-Cealer) 子项目)
 
-* 适用平台: Windows
+* 适用平台: Windows x64
 
 ## 注意事项
 1. 为避免不必要的麻烦，食用前请先阅读**注意事项**和**用户协议**
@@ -28,19 +28,12 @@ Setup 安装器: 下载 Sheas Dop Setup.exe 并运行 -> 按照提示设置即�
 ## 项目构建
 [Sheas Dop Build](https://github.com/SpaceTimee/Sheas-Dop/wiki/Sheas-Dop-Build)
 
-## 项目原理
-通过向加密 DNS 服务器发送解析请求以实现抗污染
-
-## 致谢名单
-* **Mihomo: 为本项目的全局解析功能提供全部技术基础**
-* **ArashiDNS: 为本项目的单个解析功能提供重要解析来源**
-
 ## 开发者
 **Space Time**
 
 ## 联系方式
 1. **QQ 群 (主群): 338919498**
-2. TG 群 (分群) (宽松管理): [PixCealerChat](https://t.me/PixCealerChat)
+2. TG 群 (分群): [PixCealerChat](https://t.me/PixCealerChat)
 3. **邮箱: Zeus6_6@163.com**
 
 •ᴗ•
