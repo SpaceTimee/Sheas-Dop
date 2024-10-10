@@ -1,0 +1,35 @@
+﻿<Window x:Class="Sheas_Dop.Wins.MainWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{DynamicResource CommonWindow}" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" SizeToContent="Height" Width="500"
+        Loaded="MainWin_Loaded" Closing="MainWin_Closing" KeyDown="MainWin_KeyDown">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="SingleUrlBox"
+                 Grid.Row="0" Margin="5" VerticalContentAlignment="Center" md:HintAssist.IsFloating="True" md:HintAssist.Hint="一键解析 URL"
+                 TextChanged="SingleUrlBox_TextChanged" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="SingleButton"
+                    IsDefault="True" IsEnabled="False"
+                    Grid.Column="0" Margin="5" Content="一键解析" ToolTip="点击执行一键解析"
+                    Click="SingleButton_Click" />
+            <Button x:Name="GlobalButton"
+                    Grid.Column="1" Margin="5" Content="全局净化" ToolTip="点击启动全局净化"
+                    Click="GlobalButton_Click" />
+        </Grid>
+        <Button x:Name="AboutButton"
+                Grid.Row="2" Margin="5" Content="关于项目" ToolTip="点击打开关于窗口"
+                Click="AboutButton_Click" />
+    </Grid>
+</Window>

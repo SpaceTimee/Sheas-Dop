@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using SheasCore;
 
-namespace Sheas_Dop;
+namespace Sheas_Dop.Utils;
 
-internal class Clash : Proc
+internal class MihomoProc : Proc
 {
-    internal Clash() : base("Dopping-Clash.exe")
+    internal MihomoProc() : base("Dopping-Mihomo.exe")
     {
     }
 

@@ -8,22 +8,22 @@
     <PackageReleaseNotes>Just Purge It</PackageReleaseNotes>
     <Authors>Space Time</Authors>
     <Company>Space Time</Company>
-    <AssemblyVersion>0.1.0</AssemblyVersion>
-    <Version>0.1.0</Version>
-    <FileVersion>0.1.0</FileVersion>
-    <InformationalVersion>0.1.0</InformationalVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <Version>1.0.0</Version>
+    <FileVersion>1.0.0</FileVersion>
+    <InformationalVersion>1.0.0</InformationalVersion>
     <PackageTags>Tool;Sheas;Dop;Dns</PackageTags>
     <ApplicationIcon>Sheas-Dop-Logo.ico</ApplicationIcon>
     <PackageIcon>Sheas Dop Logo.png</PackageIcon>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/SpaceTimee/Sheas-Dop</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SpaceTimee/Sheas-Dop</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright ©  2077</Copyright>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <RootNamespace>Sheas_Dop</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
@@ -59,13 +59,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Ona-Core">
-      <HintPath>..\Ona-Core\bin\Release\net5.0-windows10.0.22000.0\Ona-Core.dll</HintPath>
+      <HintPath>..\Ona-Core\bin\Release\net8.0-windows10.0.26100.0\Ona-Core.dll</HintPath>
     </Reference>
     <Reference Include="Sheas-Core">
       <HintPath>..\Sheas-Core\bin\Release\Sheas-Core.dll</HintPath>
