@@ -82,7 +82,7 @@ public partial class MainWin : Window
             MessageBox.Show("解不出来，我很抱歉");
     }
 
-    private void AboutButton_Click(object sender, RoutedEventArgs e) => MessageBox.Show($"欢迎使用 Sheas Dop {Assembly.GetExecutingAssembly().GetName().Version!.ToString().TrimEnd()[0..^2]} (Sheas Cealer 子项目)，开发者 Space Time，反馈群 338919498");
+    private void AboutButton_Click(object sender, RoutedEventArgs e) => MessageBox.Show($"欢迎使用 Sheas Dop {Assembly.GetExecutingAssembly().GetName().Version!.ToString()[0..^2]} (Sheas Cealer 子项目)，开发者 Space Time，反馈群 338919498");
 
     private void MihomoTimer_Tick(object? sender, EventArgs e)
     {
